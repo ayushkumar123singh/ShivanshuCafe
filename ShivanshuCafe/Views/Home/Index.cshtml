@@ -1,0 +1,185 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<main>
+    <!-- Modern Animated Slider -->
+    <section class="banner-slider">
+        <div class="slide active">
+            <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=1200&h=600&fit=crop" alt="">
+            <div class="banner-center">
+                <h2 class="typing-text" data-text="Fast Internet & Digital Services"></h2>
+            </div>
+        </div>
+
+        <div class="slide">
+            <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=1200&h=600&fit=crop" alt="">
+            <div class="banner-center">
+                <h2 class="typing-text" data-text="Online Forms, Ticket Booking & Prints"></h2>
+            </div>
+        </div>
+
+        <div class="slide">
+            <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=1200&h=600&fit=crop" alt="">
+            <div class="banner-center">
+                <h2 class="typing-text" data-text="Comfortable & Tech Friendly Space"></h2>
+            </div>
+        </div>
+
+        <div class="slider-dots"></div>
+    </section>
+
+
+    <section id="about" class="about-section">
+        <div class="container">
+            <h2 class="section-title">About Shivanshu Cafe</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Located in the heart of Belaganj, Gaya, Bihar, Shivanshu Cafe is your one-stop destination for all your digital needs. We provide a comfortable and modern environment for work, study, and entertainment.</p>
+                    <div class="about-features">
+                        <div class="feature-item">
+                            <div class="feature-icon">🌐</div>
+                            <h3>High-Speed Internet</h3>
+                            <p>Fast and reliable internet connectivity for all your browsing needs</p>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">🖨️</div>
+                            <h3>Printing & Scanning</h3>
+                            <p>Professional printing, scanning, and photocopying services</p>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">🎮</div>
+                            <h3>Gaming Zone</h3>
+                            <p>Exciting gaming area with latest PCs and gaming consoles</p>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">🔧</div>
+                            <h3>Computer Repair</h3>
+                            <p>Expert computer and laptop repair and maintenance services</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="why-choose-us">
+        <div class="container">
+            <h2 class="section-title">Why Choose Us</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="card-icon">📶</div>
+                    <h3>Reliable Connection</h3>
+                    <p>Experience uninterrupted high-speed internet with our state-of-the-art infrastructure</p>
+                </div>
+                <div class="feature-card">
+                    <div class="card-icon">👥</div>
+                    <h3>Friendly Staff</h3>
+                    <p>Our dedicated team is always ready to assist you with a smile</p>
+                </div>
+                <div class="feature-card">
+                    <div class="card-icon">💰</div>
+                    <h3>Affordable Rates</h3>
+                    <p>Quality services at competitive prices that won't break the bank</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title">What Our Customers Say</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <div class="quote-icon">"</div>
+                    <p class="testimonial-text">Best place to work & game locally! The internet speed is fantastic and the staff is very helpful.</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">RK</div>
+                        <div class="author-info">
+                            <h4>Rohit Kumar</h4>
+                            <p>Regular Customer</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="quote-icon">"</div>
+                    <p class="testimonial-text">Excellent service for printing and document work. Always my first choice for urgent print jobs!</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">PS</div>
+                        <div class="author-info">
+                            <h4>Priya Sharma</h4>
+                            <p>Student</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="quote-icon">"</div>
+                    <p class="testimonial-text">Great gaming zone with all the latest games. Perfect spot to hang out with friends!</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">AK</div>
+                        <div class="author-info">
+                            <h4>Amit Kumar</h4>
+                            <p>Gamer</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready to Experience Digital Excellence?</h2>
+            <p>Visit us today at Belaganj, Gaya, Bihar</p>
+            <a href="contact.html" class="btn btn-secondary">Get in Touch</a>
+        </div>
+    </section>
+</main>
+
+<script>
+    let slides = document.querySelectorAll(".slide");
+    let dotsContainer = document.querySelector(".slider-dots");
+    let index = 0;
+    let typingInterval;
+
+    slides.forEach(() => dotsContainer.innerHTML += "<span></span>");
+    let dots = dotsContainer.querySelectorAll("span");
+
+    function typeText(el) {
+        // Stop old typing interval
+        clearInterval(typingInterval);
+
+        let text = el.dataset.text;
+        el.textContent = ""; // clear previous text
+
+        let i = 0;
+        let speed = 80;
+
+        typingInterval = setInterval(() => {
+            el.textContent += text.charAt(i);
+            i++;
+            if (i === text.length) clearInterval(typingInterval);
+        }, speed);
+    }
+
+    function changeSlide() {
+        slides.forEach(s => s.classList.remove("active"));
+        dots.forEach(d => d.classList.remove("active-dot"));
+
+        slides[index].classList.add("active");
+        dots[index].classList.add("active-dot");
+
+        let textElement = slides[index].querySelector(".typing-text");
+
+        // ⭐ Reset text before typing new one
+        textElement.textContent = "";
+
+        typeText(textElement);
+
+        index = (index + 1) % slides.length;
+    }
+
+    changeSlide();
+    setInterval(changeSlide, 4000);
+</script>
+

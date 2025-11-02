@@ -1,0 +1,105 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - ShivanshuCafe</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/ShivanshuCafe.styles.css" asp-append-version="true" />
+    <link href="~/css/custom.css" rel="stylesheet" />
+
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <div class="logo">
+                    <img src="~/assets/custimage/shivanshucafeLogo.png" />
+                </div>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/jobs">Latest Job</a></li>
+                    <li><a href="/services">Services</a></li>
+                    <li><a href="/contactUs">Contact</a></li>
+                </ul>
+                <div class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container-fluid">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Shivanshu Cafe</h3>
+                    <p>Your friendly local cyber & internet hub in Belaganj, Gaya, Bihar</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/jobs">Latest Job</a></li>
+                        <li><a href="/services">Services</a></li>
+                        <li><a href="/contactUs">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Us</h4>
+                    <p>Belaganj, Gaya, Bihar</p>
+                    <p>Phone: +91 8935 89 7611</p>
+                    <p>Email: shivanshucafe@gmail.com</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Follow Us</h4>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook">📘</a>
+                        <a href="#" aria-label="Instagram">📷</a>
+                        <a href="#" aria-label="Twitter">🐦</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Shivanshu Cafe, Belaganj, Gaya, Bihar. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/custom.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const currentPath = window.location.pathname.toLowerCase();
+            const navLinks = document.querySelectorAll(".nav-menu a");
+
+            navLinks.forEach(link => {
+                const linkPath = link.getAttribute("href").toLowerCase();
+
+                // Home should ONLY be active on "/"
+                if (linkPath === "/") {
+                    if (currentPath === "/") {
+                        link.classList.add("active");
+                    }
+                    return; // skip further check for "/"
+                }
+
+                // Other pages match normally
+                if (currentPath.startsWith(linkPath)) {
+                    link.classList.add("active");
+                }
+            });
+        });
+    </script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
